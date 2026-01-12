@@ -29,13 +29,27 @@ main {
     margin-right: auto;
 }
 
-canvas#canvas {
-    border: 1px solid var(--mgray);
-    max-width: 300px;
-    height: auto;
+section {
+    display: flex;
+    flex-direction: column;
 }
 
-button, input[type="button"], .file-label {
+#milkCanvas {
+    appearance: none;
+    border: 2px solid var(--mgray);
+    max-width: 300px;
+    min-width: 300px;
+    min-height: 300px;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    align-self: center;
+    image-rendering: pixelated;
+}
+
+button,
+input[type="button"],
+.file-label {
     border: none;
     background-color: var(--mblack);
     font-family: inherit;
@@ -44,17 +58,22 @@ button, input[type="button"], .file-label {
     padding: 4px;
 }
 
-button:enabled:hover, input[type="button"]:enabled:hover, .file-label:hover {
+button:enabled:hover,
+input[type="button"]:enabled:hover,
+.file-label:hover {
     background-color: var(--mgray);
     color: var(--mblack);
 }
 
-button:enabled:active, input[type="button"]:enabled:active, .file-label:active {
+button:enabled:active,
+input[type="button"]:enabled:active,
+.file-label:active {
     background-color: var(--mwhite);
     color: var(--mblack);
 }
 
-button:disabled, input[type="button"]:disabled {
+button:disabled,
+input[type="button"]:disabled {
     color: var(--mgray);
 }
 
@@ -99,4 +118,54 @@ input[type="range"]::-moz-range-thumb {
 input[type="range"]::-moz-range-progress {
     height: 10px;
     background: var(--mwhite);
+}
+
+input[type="checkbox"] {
+    vertical-align: middle;
+    height: 25px;
+    width: 25px;
+    border: 2px solid var(--mgray);
+    background: var(--mblack);
+    user-select: none;
+}
+
+input[type="checkbox"]::checkmark::after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+select {
+    background-color: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+    min-width: 250px;
+    border: 2px solid var(--mgray);
+}
+
+hr {
+    appearance: none;
+    border: none;
+    height: 2px;
+    background-color: var(--mgray);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:hover {
+    text-decoration: underline var(--mgray);
+}
+
+footer {
+    color: var(--mgray)
 }

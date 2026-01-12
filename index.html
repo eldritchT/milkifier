@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>milkifier</title>
     <script src="js/lib/jquery-3.7.1.min.js"></script>
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -13,16 +13,18 @@
     <main>
         <section>
             <h1>milkifier</h1>
-            <canvas id="milkCanvas"></canvas>
+            <img src="" id="milkCanvas">
             <div>
                 <div class="labeledSlider">
                     <label for="slider-contrast">contrast</label>
-                    <input type="range" name="milkContrast" id="milkParamContrast">
+                    <input min="0" max="100" type="range" name="milkContrast" id="milkParamContrast">
                 </div>
                 <div class="labeledSlider">
                     <label for="slider-brightness">brightness</label>
                     <input type="range" name="milkBrightness" id="milkParamBrightness">
                 </div>
+                
+                <hr>
 
                 <div>
                     <p>
@@ -30,19 +32,34 @@
                             <label for="milkInputImg" class="file-label">load image</label>
                             <input type="file" name="milkInputImg" id="milkInputImg" accept="image/*">
                         </span>
-                        <span>
-                            <button disabled>colors...</button>
-                        </span>
-                        <span>
-                            <button>posterize</button>
-                        </span>
+                    </p>
+                    <hr hidden>
+                    <p hidden>
+                        <label for="milkColorSelect">color scheme</label>
+                        <select name="milkColorSelect" id="milkColorSelect">
+                            <option value="MilkOutside">MilkOutside</option>
+                            <option value="MilkInside">MilkInside</option>
+                            <option value="MOGreen">MOGreen</option>
+                        </select>
+                    </p>
+                    <hr>
+                    <p>
+                        <input type="checkbox" name="milkPosterize" id="milkPosterize">
+                        <label for="milkPosterize"><small>posterize</small></label>
                     </p>
                     <p>
-                        <button>milkify</button>
+                        <input type="checkbox" name="milkify" id="milkify">
+                        <label for="milkify"><small>colorize</small></label>
+                    </p>
+                    <p>
+                        <button onclick="applyEffects()">[ milkify ]</button>
                     </p>
                 </div>
             </div>
         </section>
+        <footer>
+            <small><b><a href="https://github.com/eldritchT/milkifier">milkifier v0.1.0</a></b> by <a href="https://github.com/eldritchT">eldritchT</a></small>
+        </footer>
     </main>
     <script src="js/lib/g.min.js"></script>
     <script src="js/main.js"></script>
