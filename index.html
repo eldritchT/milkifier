@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/lib/jquery-3.7.1.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <main>
+        <section>
+            <h1>milkifier</h1>
+            <canvas id="milkCanvas"></canvas>
+            <div>
+                <div class="labeledSlider">
+                    <label for="slider-contrast">contrast</label>
+                    <input type="range" name="milkContrast" id="milkParamContrast">
+                </div>
+                <div class="labeledSlider">
+                    <label for="slider-brightness">brightness</label>
+                    <input type="range" name="milkBrightness" id="milkParamBrightness">
+                </div>
+
+                <div>
+                    <p>
+                        <span>
+                            <label for="milkInputImg" class="file-label">load image</label>
+                            <input type="file" name="milkInputImg" id="milkInputImg" accept="image/*">
+                        </span>
+                        <span>
+                            <button disabled>colors...</button>
+                        </span>
+                        <span>
+                            <button>posterize</button>
+                        </span>
+                    </p>
+                    <p>
+                        <button>milkify</button>
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="js/lib/g.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
