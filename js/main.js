@@ -25,26 +25,34 @@ const ramps = {
 
 var fx = {
     posterize: false,
-    milkify: true,
+    milkify: false,
+    milkifyRamp: ramps.MilkInside,
     contrast: 0,
-    brightness: 0
+    brightness: 0,
+    autoApply: false
 }
 
-function boolify(val) {
-    if (val === "on") {
-        return true
-    } else {
-        return false
+function addOptions() {
+    let cs = $("#milkColorSelect")
+    for (r of Object.keys(ramps)) {
+        let opt = $("<option></option>")
+        opt.attr("value", r)
+        opt.text(r)
+        cs.append(opt)
     }
 }
 
 function init() {
     ctx = c.getContext('2d')
     imgUpload.on("change", importImage)
+    addOptions()
     $("#milkParamContrast").on("change", function () { fx.contrast = parseInt(this.value) })
     $("#milkParamBrightness").on("change", function () { fx.brightness = parseInt(this.value) })
     $("#milkPosterize").on("click", function () { fx.posterize = $(this)[0].checked })
+    $("#milkColorSelect").on("change", function () { fx.milkifyRamp = ramps[this.value] })
     $("#milkify").on("click", function () { fx.milkify = $(this)[0].checked })
+    $("#milkAuto").on("click", function () { fx.autoApply = $(this)[0].checked })
+    $("input,select").on("change", function () { if (fx.autoApply) { applyEffects() } })
 }
 
 function fileToImage(file) {
@@ -193,7 +201,7 @@ function setBrightness(val) {
 }
 
 function milkify() {
-    colorRamp(ctx.getImageData(0, 0, c.width, c.height), ramps.MilkOutside, true)
+    colorRamp(ctx.getImageData(0, 0, c.width, c.height), fx.milkifyRamp, true)
 }
 
 function applyEffects() {

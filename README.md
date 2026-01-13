@@ -5,13 +5,16 @@ A simple image editing tool for stylizing your images with effects and colors in
 
 ## Features & todos
 - [x] Adjusting contrast
-- [ ] Adjusting brightness (works pretty strange rn, gonna reimplement)
+- [x] Adjusting brightness
 - [x] Posterizing & colorizing
-- [ ] More palettes, including custom ones
+- [x] More color schemes, including custom ones
 - [ ] A convenient but stylish UI/UX that makes sense
 
+## Bugs & issues
+I haven't found any bugs yet. If you happen to find one, don't hesitate to [open an issue](https://github.com/eldritchT/milkifier/issues/new), I'll really appreciate it!
+
 ## Credits
-- Visual style used in this project is inspired by Nikita Kryukov's game "[Milk outside a bag of milk outside a bag of milk](https://store.steampowered.com/app/1604000)" and [passwordpassword.online](https://passwordpassword.online), a website that is a part of Milk series
+- Visual style used in this project is inspired by Nikita Kryukov's popular games, such as "[Milk outside a bag of milk outside a bag of milk](https://store.steampowered.com/app/1604000)" and [passwordpassword.online](https://passwordpassword.online), a website that is a part of Milk series
 
 - This project is inspired (but not endorsed, supported and/or maintained) by [Saezv1l's MilkUP](https://saezv1l.itch.io/milkify), which is a more complete implementation of these visual effects made using Python and NumPy
 

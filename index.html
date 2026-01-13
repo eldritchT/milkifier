@@ -4,9 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>milkifier</title>
     <script src="js/lib/jquery-3.7.1.min.js"></script>
     <link rel="stylesheet" href="css/style.css">
+    
+    <title>milkifier</title>
+    <meta name="description" content="milkify your images! (inspired by Nikita Kryukov's PMKM series)">
+    <meta name="og:image" content="img/demo.png">
+
 </head>
 
 <body>
@@ -15,15 +19,16 @@
             <h1>milkifier</h1>
             <img src="" id="milkCanvas">
             <div>
+
                 <div class="labeledSlider">
                     <label for="slider-contrast">contrast</label>
-                    <input min="0" max="100" type="range" name="milkContrast" id="milkParamContrast">
+                    <input min="-100" max="100" type="range" name="milkContrast" id="milkParamContrast">
                 </div>
                 <div class="labeledSlider">
-                    <label for="slider-brightness">brightness</label>
-                    <input type="range" name="milkBrightness" id="milkParamBrightness">
+                    <label for="slider-brightness">darkness</label>
+                    <input min="-100" max="100" type="range" name="milkBrightness" id="milkParamBrightness">
                 </div>
-                
+
                 <hr>
 
                 <div>
@@ -33,13 +38,11 @@
                             <input type="file" name="milkInputImg" id="milkInputImg" accept="image/*">
                         </span>
                     </p>
-                    <hr hidden>
-                    <p hidden>
+                    <hr>
+                    <p>
                         <label for="milkColorSelect">color scheme</label>
                         <select name="milkColorSelect" id="milkColorSelect">
-                            <option value="MilkOutside">MilkOutside</option>
-                            <option value="MilkInside">MilkInside</option>
-                            <option value="MOGreen">MOGreen</option>
+                            
                         </select>
                     </p>
                     <hr>
@@ -51,14 +54,19 @@
                         <input type="checkbox" name="milkify" id="milkify">
                         <label for="milkify"><small>colorize</small></label>
                     </p>
+                    <hr>
                     <p>
                         <button onclick="applyEffects()">[ milkify ]</button>
+                        <br>
+                        <input type="checkbox" name="milkAuto" id="milkAuto">
+                        <label for="milkAuto"><small>auto</small></label>
                     </p>
                 </div>
             </div>
         </section>
         <footer>
-            <small><b><a href="https://github.com/eldritchT/milkifier">milkifier v0.1.0</a></b> by <a href="https://github.com/eldritchT">eldritchT</a></small>
+            <small><b><a href="https://github.com/eldritchT/milkifier">milkifier v0.1.1</a></b> by <a
+                    href="https://github.com/eldritchT">eldritchT</a></small>
         </footer>
     </main>
     <script src="js/lib/g.min.js"></script>
