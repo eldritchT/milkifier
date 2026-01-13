@@ -1,8 +1,4 @@
-:root {
-    --mblack: #0d0d14;
-    --mgray: #52263e;
-    --mwhite: #ac3232;
-}
+@import url("milkcolors.css");
 
 body,
 html {
@@ -12,12 +8,26 @@ html {
 body {
     background-color: var(--mblack);
     color: var(--mwhite);
-    font-family: "Courier New", "Courier", monospace;
+    font-family: "Courier New", "Courier", "monospace", monospace;
     font-size: 20px;
+}
+
+hr {
+    appearance: none;
+    border: none;
+    height: 2px;
+    background-color: var(--mgray);
+    margin-top: 12px;
 }
 
 h1 {
     font-size: 25px;
+}
+
+h2 {
+    font-size: 23px;
+    margin-top: 12px;
+    margin-bottom: 12px;
 }
 
 main {
@@ -37,7 +47,7 @@ section {
 #milkCanvas {
     appearance: none;
     border: 2px solid var(--mgray);
-    max-width: 300px;
+    max-width: 500px;
     height: auto;
     margin-left: auto;
     margin-right: auto;
@@ -140,13 +150,6 @@ select {
     color: inherit;
     min-width: 250px;
     border: 2px solid var(--mgray);
-}
-
-hr {
-    appearance: none;
-    border: none;
-    height: 2px;
-    background-color: var(--mgray);
 }
 
 a {

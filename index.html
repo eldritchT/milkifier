@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="js/lib/jquery-3.7.1.min.js"></script>
     <link rel="stylesheet" href="css/style.css">
-    
+
     <title>milkifier</title>
     <meta name="description" content="milkify your images! (inspired by Nikita Kryukov's PMKM series)">
     <meta name="og:image" content="img/demo.png">
@@ -19,53 +19,59 @@
             <h1>milkifier</h1>
             <img src="" id="milkCanvas">
             <div>
-
-                <div class="labeledSlider">
-                    <label for="slider-contrast">contrast</label>
-                    <input min="-100" max="100" type="range" name="milkContrast" id="milkParamContrast">
-                </div>
-                <div class="labeledSlider">
-                    <label for="slider-brightness">darkness</label>
-                    <input min="-100" max="100" type="range" name="milkBrightness" id="milkParamBrightness">
-                </div>
-
-                <hr>
-
                 <div>
                     <p>
-                        <span>
-                            <label for="milkInputImg" class="file-label">load image</label>
-                            <input type="file" name="milkInputImg" id="milkInputImg" accept="image/*">
-                        </span>
+                    <h2>choose an image</h2>
+                    <span>
+                        <label for="milkInputImg" class="file-label">[ load file ]</label>
+                        <input type="file" name="milkInputImg" id="milkInputImg" accept="image/*">
+                    </span>
                     </p>
                     <hr>
-                    <p>
-                        <label for="milkColorSelect">color scheme</label>
-                        <select name="milkColorSelect" id="milkColorSelect">
-                            
-                        </select>
-                    </p>
+                    <div>
+                        <h2>adjust</h2>
+                        <div class="labeledSlider">
+                            <label for="slider-contrast">contrast</label>
+                            <input min="-100" max="100" type="range" name="milkContrast" id="milkParamContrast">
+                        </div>
+                        <div class="labeledSlider">
+                            <label for="slider-brightness">darkness</label>
+                            <input min="-100" max="100" type="range" name="milkBrightness" id="milkParamBrightness">
+                        </div>
+                    </div>
+
                     <hr>
-                    <p>
+                    <div>
+                        <h2>posterize</h2>
                         <input type="checkbox" name="milkPosterize" id="milkPosterize">
-                        <label for="milkPosterize"><small>posterize</small></label>
-                    </p>
-                    <p>
-                        <input type="checkbox" name="milkify" id="milkify">
-                        <label for="milkify"><small>colorize</small></label>
-                    </p>
+                        <label for="milkPosterize"><small>enable</small></label>
+                    </div>
                     <hr>
-                    <p>
-                        <button onclick="applyEffects()">[ milkify ]</button>
+                    <div>
+                        <h2>colorize</h2>
+                        <label for="milkColorSelect">color scheme</label>
+                        <select name="milkColorSelect" id="milkColorSelect"></select>
+                    </div>
+                    <div>
+                        <button onclick="rampsImport()">[ import ]</button>
+                        <button onclick="rampsExport()">[ export ]</button>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="milkify" id="milkify" checked>
+                        <label for="milkify"><small>enable</small></label>
+                    </div>
+                    <hr>
+                    <div>
+                        <button onclick="applyEffects()" id="milkApply"><b><big>[ milkify ]</b></big></button>
                         <br>
                         <input type="checkbox" name="milkAuto" id="milkAuto">
                         <label for="milkAuto"><small>auto</small></label>
-                    </p>
+                    </div>
                 </div>
             </div>
         </section>
         <footer>
-            <small><b><a href="https://github.com/eldritchT/milkifier">milkifier v0.1.1b</a></b> by <a
+            <small><b><a href="https://github.com/eldritchT/milkifier">milkifier v0.2.0</a></b> by <a
                     href="https://github.com/eldritchT">eldritchT</a></small>
         </footer>
     </main>

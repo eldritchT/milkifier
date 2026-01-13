@@ -17,15 +17,41 @@ const ramps = {
         { position: 1.0, color: [172, 50, 50] }
     ],
     MOGreen: [
-        { position: 0.0, color: [13, 18, 20] },
-        { position: 0.5, color: [38, 82, 72] },
-        { position: 1.0, color: [50, 172, 139] }
+        { position: 0.0, color: [13, 20, 15] },
+        { position: 0.5, color: [38, 82, 59] },
+        { position: 1.0, color: [50, 172, 95] }
+    ],
+    MOBlue: [
+        { position: 0.0, color: [15, 13, 20] },
+        { position: 0.5, color: [50, 38, 82] },
+        { position: 1.0, color: [87, 50, 172] }
+    ],
+    DownWeGo: [
+        { "position": 0, "color": [1, 0, 0] },
+        { "position": 0.1666666666666667, "color": [43, 0, 0] },
+        { "position": 0.3333333333333333, "color": [128, 0, 0] },
+        { "position": 0.5, "color": [143, 0, 0] },
+        { "position": 0.6666666666666667, "color": [170, 0, 0] },
+        { "position": 1.0, "color": [200, 0, 0] }
+    ],
+    Sewer: [
+        { position: 0.0, color: [17, 4, 23] },
+        { position: 0.5, color: [146, 52, 180] },
+        { position: 1.0, color: [249, 213, 249] }
+    ],
+    Psychedelic: [
+        { "position": 0, "color": [255, 0, 0] },
+        { "position": 0.1666666666666667, "color": [255, 255, 0] },
+        { "position": 0.3333333333333333, "color": [0, 255, 0] },
+        { "position": 0.5, "color": [0, 255, 255] },
+        { "position": 0.6666666666666667, "color": [0, 0, 255] },
+        { "position": 1.0, "color": [255, 0, 255] }
     ]
 }
 
 var fx = {
     posterize: false,
-    milkify: false,
+    milkify: true,
     milkifyRamp: ramps.MilkInside,
     contrast: 0,
     brightness: 0,
@@ -34,6 +60,7 @@ var fx = {
 
 function addOptions() {
     let cs = $("#milkColorSelect")
+    cs.empty()
     for (r of Object.keys(ramps)) {
         let opt = $("<option></option>")
         opt.attr("value", r)
@@ -46,28 +73,30 @@ function init() {
     ctx = c.getContext('2d')
     imgUpload.on("change", importImage)
     addOptions()
-    $("#milkParamContrast").on("change", function () { fx.contrast = parseInt(this.value) })
-    $("#milkParamBrightness").on("change", function () { fx.brightness = parseInt(this.value) })
+    $("#milkParamContrast").on("input", function () { fx.contrast = parseInt(this.value) })
+    $("#milkParamBrightness").on("input", function () { fx.brightness = parseInt(this.value) })
     $("#milkPosterize").on("click", function () { fx.posterize = $(this)[0].checked })
     $("#milkColorSelect").on("change", function () { fx.milkifyRamp = ramps[this.value] })
     $("#milkify").on("click", function () { fx.milkify = $(this)[0].checked })
+    $("#milkApply").prop("disabled", true)
+    $("#milkAuto").prop("disabled", true)
     $("#milkAuto").on("click", function () { fx.autoApply = $(this)[0].checked })
     $("input,select").on("change", function () { if (fx.autoApply) { applyEffects() } })
 }
 
 function fileToImage(file) {
     return new Promise((resolve, reject) => {
-        const reader = new FileReader();
+        const reader = new FileReader()
 
         reader.onload = (event) => {
-            const img = new Image();
-            img.src = event.target.result;
-            img.onload = () => resolve(img);
-            img.onerror = () => reject(new Error("Image loading error"));
+            const img = new Image()
+            img.src = event.target.result
+            img.onload = () => resolve(img)
+            img.onerror = () => reject(new Error("Image loading error"))
         };
 
-        reader.onerror = () => reject(new Error("File reading error"));
-        reader.readAsDataURL(file);
+        reader.onerror = () => reject(new Error("File reading error"))
+        reader.readAsDataURL(file)
     });
 }
 
@@ -83,6 +112,8 @@ function importImage() {
             currentImage.draw(ctx)
             currentImageCtx = currentImage.canvas.getContext('2d')
             updateImg()
+            $("#milkApply").prop("disabled", false)
+            $("#milkAuto").prop("disabled", false)
         })
 
 }
@@ -202,7 +233,19 @@ function milkify() {
     colorRamp(ctx.getImageData(0, 0, c.width, c.height), fx.milkifyRamp, true)
 }
 
+function rampsExport() {
+    prompt("copy your color schemes", JSON.stringify(ramps))
+}
+
+function rampsImport() {
+    var i = prompt("paste your color schemes")
+    if (i != "") {
+        ramps = JSON.parse(i)
+    }
+}
+
 function applyEffects() {
+    $("#milkify").prop("disabled", true)
     currentImage.draw(ctx)
     if (fx.posterize) {
         posterize()
@@ -217,6 +260,7 @@ function applyEffects() {
         milkify()
     }
     updateImg()
+    $("#milkify").prop("disabled", false)
 }
 
 function updateImg() {
