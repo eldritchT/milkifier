@@ -90,7 +90,6 @@ function importImage() {
 function posterize() {
     let posterizedImg = g.posterize(currentImage)
     posterizedImg.draw(ctx, 3)
-    updateImg()
 }
 
 function colorize(r, g, b) {
@@ -103,7 +102,6 @@ function colorize(r, g, b) {
     }
 
     ctx.putImageData(imageData, 0, 0)
-    updateImg()
 }
 
 function colorRamp(inputImageData, colorStops, disableInter = false) {
