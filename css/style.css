@@ -12,7 +12,7 @@ html {
 body {
     background-color: var(--mblack);
     color: var(--mwhite);
-    font-family: monospace;
+    font-family: "Courier New", "Courier", monospace;
     font-size: 20px;
 }
 
@@ -24,7 +24,7 @@ main {
     display: flex;
     flex-direction: column;
     text-align: center;
-    width: 50%;
+    max-width: 700px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -38,8 +38,6 @@ section {
     appearance: none;
     border: 2px solid var(--mgray);
     max-width: 300px;
-    min-width: 300px;
-    min-height: 300px;
     height: auto;
     margin-left: auto;
     margin-right: auto;
